@@ -1,48 +1,63 @@
 /* ==========================================================================
-   LUMINA BOTANICALS - LUXURY CLEAN & ORGANIC SKINCARE
+   LUMINA BOTANICALS - CLEAN & ORGANIC SKINCARE
    Responsive Landing Page & Interactive Navigation (Prodigy InfoTech Task-01)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. CSS Reset & Variables (Design Tokens)
+   1. Design Tokens & CSS Reset
    -------------------------------------------------------------------------- */
 :root {
-  /* Color Palette - Organic & Earth Luxury */
-  --color-primary: #1F362A;       /* Deep Forest Sage */
-  --color-primary-dark: #14241C;  /* Dark Spruce */
-  --color-primary-light: #345846; /* Muted Leaf */
-  --color-accent: #B87B54;        /* Warm Terracotta / Sandalwood */
-  --color-accent-hover: #9E643E;  /* Deep Terracotta */
-  --color-accent-soft: #F4EBE3;   /* Soft Rose / Cream */
+  /* Brand Colors - Organic Earth & Botanical Luxury */
+  --color-primary: #1F362A;         /* Deep Forest Sage */
+  --color-primary-dark: #12221A;    /* Dark Pine */
+  --color-primary-light: #2E513F;   /* Muted Leaf */
   
-  --color-bg: #FAF7F2;            /* Organic Porcelain Background */
-  --color-surface: #FFFFFF;       /* Crisp White Card Surface */
-  --color-surface-tint: #F3ECE2;  /* Warm Sand Tint */
+  --color-accent: #B87B54;          /* Warm Terracotta Sandalwood */
+  --color-accent-hover: #9E643E;    /* Deep Terracotta */
+  --color-accent-soft: #F4EBE3;     /* Soft Rose / Cream */
   
-  --color-text-main: #242926;     /* Deep Charcoal */
-  --color-text-muted: #5E6761;    /* Muted Slate / Sage Gray */
-  --color-text-light: #8E9892;    /* Soft Subtitle Gray */
-  --color-border: rgba(31, 54, 42, 0.1); /* Gentle Border */
+  --color-bg: #FAF7F2;              /* Clean Porcelain Cream */
+  --color-surface: #FFFFFF;         /* Pure Card White */
+  --color-surface-tint: #F3ECE2;    /* Warm Sand Tint */
+  
+  --color-text-main: #242926;       /* Deep Charcoal */
+  --color-text-muted: #5E6761;      /* Slate Gray */
+  --color-text-light: #8E9892;      /* Subtitle Gray */
+  
+  --color-border: rgba(31, 54, 42, 0.1);
   --color-border-hover: rgba(31, 54, 42, 0.25);
   
+  /* Initial Navigation Colors (Top of Page) */
+  --nav-bg-initial: rgba(250, 247, 242, 0.85);
+  --nav-text-initial: #1F362A;
+  
+  /* Scrolled Navigation Colors (Active on Scroll) */
+  --nav-bg-scrolled: #FFFFFF;
+  --nav-text-scrolled: #12221A;
+  --nav-border-scrolled: rgba(31, 54, 42, 0.12);
+
+  /* Hover Interactive Colors (Managed via CSS & JavaScript) */
+  --nav-hover-bg: #1F362A;
+  --nav-hover-text: #FFFFFF;
+
   /* Typography */
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-arabic: 'Noto Kufi Arabic', system-ui, sans-serif;
   
-  /* Layout & Elevations */
-  --header-height: 84px;
-  --header-height-scrolled: 68px;
+  /* Layout Dimensions */
+  --header-height: 80px;
+  --header-height-scrolled: 66px;
   --container-max: 1240px;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 24px;
   --radius-full: 9999px;
   
+  /* Shadows */
   --shadow-sm: 0 2px 8px rgba(31, 54, 42, 0.04);
   --shadow-md: 0 8px 24px rgba(31, 54, 42, 0.08);
   --shadow-lg: 0 16px 36px rgba(31, 54, 42, 0.12);
-  --shadow-nav: 0 6px 20px rgba(20, 36, 28, 0.06);
+  --shadow-nav: 0 4px 20px rgba(20, 36, 28, 0.08);
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -82,7 +97,7 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 button {
@@ -94,54 +109,35 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   2. Top Announcement Bar
-   -------------------------------------------------------------------------- */
-.announcement-bar {
-  background-color: var(--color-primary-dark);
-  color: #EDE8DE;
-  font-size: 0.85rem;
-  padding: 8px 16px;
-  text-align: center;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-.announcement-bar span {
-  font-family: var(--font-arabic);
-  font-size: 0.82rem;
-  opacity: 0.9;
-  margin-left: 6px;
-}
-
-/* --------------------------------------------------------------------------
-   3. Header & Interactive Navigation (Core Task Requirement)
+   2. FIXED NAVIGATION MENU (Visible on All Pages - Core Task Role)
    -------------------------------------------------------------------------- */
 .site-header {
   position: fixed;
-  top: 37px; /* Below announcement bar */
+  top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   height: var(--header-height);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgba(250, 247, 242, 0.75);
+  background-color: var(--nav-bg-initial);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(31, 54, 42, 0.06);
-  transition: all var(--transition-medium);
+  transition: background-color var(--transition-medium),
+              height var(--transition-medium),
+              box-shadow var(--transition-medium),
+              border-color var(--transition-medium);
 }
 
-/* State when user scrolls down */
+/* Scrolled state: background color and font color change */
 .site-header.scrolled {
-  top: 0;
   height: var(--header-height-scrolled);
-  background-color: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--nav-bg-scrolled);
   box-shadow: var(--shadow-nav);
+  border-bottom-color: var(--nav-border-scrolled);
 }
 
 .nav-container {
@@ -154,7 +150,7 @@ button {
   justify-content: space-between;
 }
 
-/* Logo */
+/* Brand Logo */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -162,15 +158,16 @@ button {
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--color-primary);
+  transition: color var(--transition-fast);
 }
 
-.logo-mark {
+.logo-symbol {
   font-size: 1.5rem;
   color: var(--color-accent);
   transition: transform var(--transition-medium);
 }
 
-.brand-logo:hover .logo-mark {
+.brand-logo:hover .logo-symbol {
   transform: rotate(45deg);
 }
 
@@ -185,22 +182,21 @@ button {
 .logo-sub {
   font-family: var(--font-body);
   font-size: 0.65rem;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-accent);
   font-weight: 600;
 }
 
-/* Navigation Links Container */
+/* Desktop Navigation List */
 .main-nav {
-  /* Modern CSS scrollspy standard */
   scroll-target-group: auto;
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   list-style: none;
 }
 
@@ -208,31 +204,34 @@ button {
   position: relative;
 }
 
-/* Navigation Link Styling & Interactive Hover Transitions */
+/* Navigation Links: Base Style & Interactive Transitions */
 .nav-link {
   position: relative;
   display: inline-block;
   padding: 8px 16px;
   font-size: 0.92rem;
   font-weight: 500;
-  color: var(--color-text-main);
+  color: var(--nav-text-initial);
   border-radius: var(--radius-full);
-  transition: color var(--transition-fast), background-color var(--transition-fast);
+  transition: background-color var(--transition-fast), 
+              color var(--transition-fast), 
+              transform var(--transition-fast);
 }
 
-/* Hover effect: Subtle pill glow and color change */
-.nav-link:hover {
-  color: var(--color-accent);
-  background-color: rgba(184, 123, 84, 0.08);
+/* Scrolled state links */
+.site-header.scrolled .nav-link {
+  color: var(--nav-text-scrolled);
 }
 
-/* Active State (ScrollSpy Target Support) */
+/* Active Section Indicator */
+.nav-link.active,
 .nav-link:is(:target-current, .target-current, [aria-current="page"]) {
   color: var(--color-primary);
   font-weight: 600;
   background-color: var(--color-surface-tint);
 }
 
+.nav-link.active::after,
 .nav-link:is(:target-current, .target-current, [aria-current="page"])::after {
   content: '';
   position: absolute;
@@ -245,18 +244,32 @@ button {
   border-radius: 2px;
 }
 
-/* Header Actions */
+/* Header Action Buttons */
 .header-actions {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.nav-action-btn {
-  display: inline-flex;
+.btn-nav {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: 8px 18px;
+  font-size: 0.88rem;
 }
 
-/* Scroll Progress Track and Bar */
+.site-header.scrolled .btn-nav {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+}
+
+.site-header.scrolled .btn-nav:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Scroll Progress Track */
 .scroll-progress-track {
   position: absolute;
   bottom: 0;
@@ -284,8 +297,8 @@ button {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  z-index: 1002;
   cursor: pointer;
+  z-index: 1002;
 }
 
 .mobile-toggle .bar {
@@ -309,7 +322,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   4. Mobile Navigation Drawer
+   3. Mobile Navigation Drawer
    -------------------------------------------------------------------------- */
 .mobile-drawer {
   position: fixed;
@@ -353,9 +366,7 @@ button {
 }
 
 .drawer-nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   padding: 12px 16px;
   font-size: 1.05rem;
   font-weight: 500;
@@ -364,14 +375,8 @@ button {
   transition: background-color var(--transition-fast);
 }
 
-.drawer-nav-link .arabic-sub {
-  font-family: var(--font-arabic);
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-}
-
-.drawer-nav-link:hover,
-.drawer-nav-link:is(.target-current, [aria-current="page"]) {
+.drawer-nav-link.active,
+.drawer-nav-link:hover {
   background-color: var(--color-surface-tint);
   color: var(--color-primary);
   font-weight: 600;
@@ -407,7 +412,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   5. Buttons & Badges
+   4. Buttons & Badges
    -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -432,18 +437,6 @@ button {
   background-color: var(--color-primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(31, 54, 42, 0.28);
-}
-
-.btn-secondary {
-  background-color: var(--color-surface);
-  color: var(--color-primary);
-  border: 1px solid var(--color-border);
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background-color: #FFFFFF;
 }
 
 .btn-outline {
@@ -488,7 +481,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   6. Shared Layout Sections
+   5. General Layout & Sections
    -------------------------------------------------------------------------- */
 .container {
   width: 100%;
@@ -545,13 +538,32 @@ button {
   margin: 0 auto;
 }
 
+/* Inner Page Hero Banner */
+.page-main {
+  padding-top: var(--header-height);
+}
+
+.page-hero-banner {
+  background: radial-gradient(circle at 50% 50%, rgba(243, 236, 226, 0.6), transparent 70%),
+              var(--color-bg);
+  padding: clamp(56px, 8vw, 84px) 0 40px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  color: var(--color-primary-dark);
+  margin: 12px 0 16px;
+}
+
 /* --------------------------------------------------------------------------
-   7. Hero Section
+   6. Hero Section
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding-top: calc(var(--header-height) + 60px);
+  padding-top: calc(var(--header-height) + 48px);
   padding-bottom: 64px;
-  background: radial-gradient(circle at 80% 20%, rgba(232, 223, 216, 0.4), transparent 60%),
+  background: radial-gradient(circle at 80% 20%, rgba(232, 223, 216, 0.45), transparent 60%),
               linear-gradient(180deg, var(--color-bg) 0%, #FFFFFF 100%);
   min-height: min(92dvh, 880px);
   display: flex;
@@ -622,7 +634,6 @@ button {
   background-color: var(--color-border);
 }
 
-/* Hero Media & Floating Badges */
 .hero-media {
   position: relative;
 }
@@ -630,7 +641,6 @@ button {
 .media-card-wrapper {
   position: relative;
   border-radius: var(--radius-lg);
-  overflow: visible;
 }
 
 .image-frame.main-frame {
@@ -698,7 +708,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   8. Trust Bar
+   7. Trust Certifications Bar
    -------------------------------------------------------------------------- */
 .trust-bar {
   background-color: var(--color-surface);
@@ -738,7 +748,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   9. Philosophy & Ingredients Section
+   8. Philosophy & Ingredients Section
    -------------------------------------------------------------------------- */
 .philosophy-section {
   background-color: #FAF7F2;
@@ -781,12 +791,12 @@ button {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   color: var(--color-primary);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
-.ingredient-ar {
-  font-family: var(--font-arabic);
-  font-size: 0.85rem;
+.ingredient-subtitle {
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--color-accent);
   margin-bottom: 12px;
 }
@@ -810,7 +820,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   10. Products Collection
+   9. Products Collection Grid
    -------------------------------------------------------------------------- */
 .products-section {
   background-color: #FFFFFF;
@@ -942,14 +952,7 @@ button {
   font-family: var(--font-heading);
   font-size: 1.2rem;
   color: var(--color-primary-dark);
-  margin-bottom: 2px;
-}
-
-.product-arabic {
-  font-family: var(--font-arabic);
-  font-size: 0.82rem;
-  color: var(--color-accent);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .product-benefits {
@@ -976,7 +979,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   11. The Ritual Section
+   10. The Ritual Section
    -------------------------------------------------------------------------- */
 .ritual-section {
   background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F2 100%);
@@ -1087,7 +1090,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   12. Reviews Section
+   11. Reviews Section
    -------------------------------------------------------------------------- */
 .reviews-section {
   background-color: #FAF7F2;
@@ -1155,7 +1158,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   13. Contact & Consultation Section
+   12. Contact & Consultation Section
    -------------------------------------------------------------------------- */
 .contact-section {
   background: radial-gradient(circle at 50% 50%, rgba(243, 236, 226, 0.5), transparent 70%),
@@ -1253,7 +1256,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   14. Footer
+   13. Footer
    -------------------------------------------------------------------------- */
 .site-footer {
   background-color: var(--color-primary-dark);
@@ -1277,13 +1280,6 @@ button {
   font-size: 0.9rem;
   color: #B2BDB6;
   line-height: 1.6;
-  margin-bottom: 8px;
-}
-
-.arabic-tagline {
-  font-family: var(--font-arabic);
-  font-size: 0.85rem;
-  color: var(--color-accent);
   margin-bottom: 24px;
 }
 
@@ -1388,7 +1384,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   15. Toast Notification
+   14. Toast Notification
    -------------------------------------------------------------------------- */
 .toast-notification {
   position: fixed;
@@ -1417,7 +1413,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   16. Responsive Breakpoints
+   15. Responsive Breakpoints
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .hero-container,
@@ -1439,7 +1435,7 @@ button {
 
 @media (max-width: 768px) {
   .main-nav,
-  .nav-action-btn {
+  .btn-nav {
     display: none;
   }
 
@@ -1448,12 +1444,7 @@ button {
   }
 
   .site-header {
-    top: 0;
     height: var(--header-height-scrolled);
-  }
-
-  .announcement-bar {
-    display: none; /* Hide top bar on mobile for cleaner viewport */
   }
 
   .hero-section {

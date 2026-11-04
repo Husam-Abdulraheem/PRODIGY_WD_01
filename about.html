@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | LUMINA Botanicals</title>
+  <meta name="description" content="Discover LUMINA Botanicals philosophy, sustainable sourcing, and scientific clean beauty commitment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- FIXED NAVIGATION MENU (Visible on all pages) -->
+  <header class="site-header" id="header" role="banner">
+    <div class="nav-container">
+      <a href="index.html#hero" class="brand-logo" id="brand-logo" aria-label="LUMINA Botanicals Home">
+        <span class="logo-symbol">❀</span>
+        <span class="logo-text">LUMINA <span class="logo-sub">Botanicals</span></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list" role="list">
+          <li class="nav-item">
+            <a href="index.html#hero" class="nav-link" data-nav="hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link active" data-nav="philosophy">Philosophy</a>
+          </li>
+          <li class="nav-item">
+            <a href="products.html" class="nav-link" data-nav="products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#ritual" class="nav-link" data-nav="ritual">The Ritual</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#reviews" class="nav-link" data-nav="reviews">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" data-nav="contact">Consultation</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="products.html" class="btn btn-nav" id="nav-cta-btn">Shop Essentials</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle navigation menu">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="scroll-progress-track" aria-hidden="true">
+      <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <span class="logo-symbol">❀</span>
+        <span class="logo-text">LUMINA</span>
+      </div>
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="drawer-nav" aria-label="Mobile Navigation Links">
+      <ul class="drawer-nav-list" role="list">
+        <li><a href="index.html#hero" class="drawer-nav-link">Home</a></li>
+        <li><a href="about.html" class="drawer-nav-link active">Philosophy</a></li>
+        <li><a href="products.html" class="drawer-nav-link">Products</a></li>
+        <li><a href="index.html#ritual" class="drawer-nav-link">The Ritual</a></li>
+        <li><a href="index.html#reviews" class="drawer-nav-link">Reviews</a></li>
+        <li><a href="contact.html" class="drawer-nav-link">Consultation</a></li>
+      </ul>
+      <div class="drawer-footer">
+        <a href="products.html" class="btn btn-primary btn-block">Shop All Essentials</a>
+        <p class="drawer-note">100% Clean • Cruelty-Free • Dermatologist Approved</p>
+      </div>
+    </nav>
+  </div>
+  <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+
+  <!-- Page Content -->
+  <main id="main-content" class="page-main">
+    <section class="page-hero-banner">
+      <div class="container text-center">
+        <span class="section-tag">About LUMINA</span>
+        <h1 class="page-title">Pioneering Pure Botanical Skincare</h1>
+        <p class="section-subtitle">
+          We combine cold-pressed botanicals with clinical dermatology to formulate clean, effective skincare that respects your skin barrier and the planet.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="ritual-layout">
+          <div class="ritual-content">
+            <span class="section-tag">Our Ethical Standards</span>
+            <h2 class="section-title">Zero Toxins, 100% Transparency</h2>
+            <p class="hero-description">
+              Every drop is formulated without synthetic fragrances, parabens, sulfates, silicones, or phthalates. We independently test every batch to guarantee potency, stability, and safety.
+            </p>
+            <div class="hero-cta-group">
+              <a href="products.html" class="btn btn-primary">Explore Products</a>
+              <a href="contact.html" class="btn btn-outline">Ask an Esthetician</a>
+            </div>
+          </div>
+          <div class="ritual-media">
+            <div class="image-frame main-frame">
+              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80" alt="Botanical essential oils and glass pipette dropper" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="index.html#hero" class="brand-logo footer-logo">
+          <span class="logo-symbol">❀</span>
+          <span class="logo-text">LUMINA <span class="logo-sub">Botanicals</span></span>
+        </a>
+        <p class="footer-tagline">
+          Clean, cold-pressed, non-toxic skincare for radiant skin and mindful self-care rituals.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="about.html">About & Philosophy</a></li>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="contact.html">Consultation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="contact.html">Skin Consultation</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">FAQ & Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe for early product launches and clean skincare wellness guides.</p>
+        <form class="mini-newsletter" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" placeholder="Your email address" aria-label="Your email" required>
+          <button type="submit" class="btn btn-primary btn-small">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 LUMINA Botanicals. All Rights Reserved. Prodigy InfoTech Task-01.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

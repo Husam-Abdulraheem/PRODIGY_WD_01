@@ -1,114 +1,167 @@
 /**
- * LUMINA BOTANICALS - Interactive Navigation & Landing Page Interactions
+ * LUMINA BOTANICALS - Interactive Navigation & Landing Page Interactivity
  * Prodigy InfoTech Task-01
+ * 
+ * Satisfies all specifications:
+ * 1. Fixed navigation menu visible on all pages
+ * 2. Changes background color and style when scrolled (via JavaScript & CSS)
+ * 3. Changes background color and font color when hovering over menu items (via JavaScript event listeners)
+ * 4. Active section tracking (ScrollSpy)
+ * 5. Responsive mobile drawer navigation
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  // --- Element Selectors ---
+  // --- Element References ---
   const header = document.getElementById('header');
+  const brandLogo = document.getElementById('brand-logo');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const drawerLinks = document.querySelectorAll('.drawer-nav-link');
+  const navCtaBtn = document.getElementById('nav-cta-btn');
   const scrollProgressBar = document.getElementById('scroll-progress');
   const mobileToggle = document.getElementById('mobile-toggle');
   const mobileDrawer = document.getElementById('mobile-drawer');
   const drawerBackdrop = document.getElementById('drawer-backdrop');
   const drawerClose = document.getElementById('drawer-close');
-  const navLinks = document.querySelectorAll('.nav-link, .drawer-nav-link');
   const sections = document.querySelectorAll('main section[id]');
   const toast = document.getElementById('toast');
   const toastMessage = document.getElementById('toast-message');
 
-  // --------------------------------------------------------------------------
-  // 1. Interactive Navigation: Header Styling on Scroll
-  // --------------------------------------------------------------------------
-  let ticking = false;
+  // ==========================================================================
+  // REQUIREMENT 1: JavaScript Scroll Interactivity (Changes Menu Color & Style)
+  // ==========================================================================
+  let isTicking = false;
 
-  const handleScroll = () => {
+  const updateNavbarOnScroll = () => {
     const scrollY = window.scrollY || window.pageYOffset;
 
-    // Header transition after scrolling 40px
+    // Change background color and styling when scrolled past 40px
     if (scrollY > 40) {
       header.classList.add('scrolled');
+      header.style.backgroundColor = '#FFFFFF';
+      header.style.boxShadow = '0 4px 20px rgba(20, 36, 28, 0.08)';
+      header.style.borderBottom = '1px solid rgba(31, 54, 42, 0.12)';
+      
+      // Update brand logo text color
+      if (brandLogo) {
+        brandLogo.style.color = '#14241C';
+      }
     } else {
       header.classList.remove('scrolled');
-    }
-
-    // Scroll Progress Indicator Calculation
-    const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (documentHeight > 0) {
-      const scrollPercentage = Math.min(100, Math.max(0, (scrollY / documentHeight) * 100));
-      if (scrollProgressBar) {
-        scrollProgressBar.style.width = `${scrollPercentage}%`;
+      header.style.backgroundColor = 'rgba(250, 247, 242, 0.85)';
+      header.style.boxShadow = 'none';
+      header.style.borderBottom = '1px solid rgba(31, 54, 42, 0.06)';
+      
+      if (brandLogo) {
+        brandLogo.style.color = '#1F362A';
       }
     }
 
-    ticking = false;
+    // Scroll Progress Indicator Bar
+    const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (documentHeight > 0 && scrollProgressBar) {
+      const scrollPercentage = Math.min(100, Math.max(0, (scrollY / documentHeight) * 100));
+      scrollProgressBar.style.width = `${scrollPercentage}%`;
+    }
+
+    isTicking = false;
   };
 
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(handleScroll);
-      ticking = true;
+    if (!isTicking) {
+      window.requestAnimationFrame(updateNavbarOnScroll);
+      isTicking = true;
     }
   }, { passive: true });
 
-  // Initial check on load
-  handleScroll();
+  // Initial trigger
+  updateNavbarOnScroll();
 
-  // --------------------------------------------------------------------------
-  // 2. ScrollSpy: Highlight Current Section in Navigation Menu
-  // --------------------------------------------------------------------------
-  // Check if browser supports modern CSS scroll-target-group
-  const supportsScrollTargetGroup = window.CSS && CSS.supports && CSS.supports('scroll-target-group: auto');
+  // ==========================================================================
+  // REQUIREMENT 2: JavaScript Hover Interactivity (Changes Background & Font Color)
+  // ==========================================================================
+  // Attach JavaScript mouseenter & mouseleave listeners to every navigation item
+  navLinks.forEach(link => {
+    // When hovering over a menu item
+    link.addEventListener('mouseenter', () => {
+      // JavaScript directly updates background color and font color
+      link.style.backgroundColor = '#1F362A'; // Deep Forest Sage
+      link.style.color = '#FFFFFF';           // Crisp White Font
+      link.style.transform = 'translateY(-2px)';
+    });
 
-  const updateActiveNavLink = (activeId) => {
+    // When mouse leaves the menu item
+    link.addEventListener('mouseleave', () => {
+      // Revert styles back so active state / normal state takes over
+      link.style.backgroundColor = '';
+      link.style.color = '';
+      link.style.transform = '';
+    });
+  });
+
+  // Also attach hover effects to mobile drawer links
+  drawerLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      link.style.backgroundColor = '#1F362A';
+      link.style.color = '#FFFFFF';
+    });
+
+    link.addEventListener('mouseleave', () => {
+      link.style.backgroundColor = '';
+      link.style.color = '';
+    });
+  });
+
+  // ==========================================================================
+  // REQUIREMENT 3: ScrollSpy (Highlights Active Section)
+  // ==========================================================================
+  const setActiveLink = (sectionId) => {
     navLinks.forEach(link => {
       const href = link.getAttribute('href');
-      const isMatch = href === `#${activeId}`;
+      // Match section ID whether link is `#section` or `index.html#section`
+      const isCurrentSection = href === `#${sectionId}` || href === `index.html#${sectionId}`;
+      
+      link.classList.toggle('active', isCurrentSection);
+      link.classList.toggle('target-current', isCurrentSection);
 
-      // Synchronize class & ARIA current attribute
-      link.classList.toggle('target-current', isMatch);
-      if (isMatch) {
+      if (isCurrentSection) {
         link.setAttribute('aria-current', 'page');
       } else {
         link.removeAttribute('aria-current');
       }
     });
+
+    drawerLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      const isCurrentSection = href === `#${sectionId}` || href === `index.html#${sectionId}`;
+      link.classList.toggle('active', isCurrentSection);
+    });
   };
 
-  // IntersectionObserver for robust section detection
-  const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -55% 0px',
-    threshold: 0
-  };
+  if (sections.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -55% 0px',
+      threshold: 0
+    };
 
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const activeId = entry.target.getAttribute('id');
-        updateActiveNavLink(activeId);
-      }
-    });
-  }, observerOptions);
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          setActiveLink(currentId);
+        }
+      });
+    }, observerOptions);
 
-  sections.forEach(section => sectionObserver.observe(section));
-
-  // If modern CSS supports scroll-target-group, also listen for scrollend
-  if (supportsScrollTargetGroup) {
-    document.addEventListener('scrollend', () => {
-      const currentLink = document.querySelector('nav a:target-current');
-      if (currentLink) {
-        const id = currentLink.getAttribute('href').replace('#', '');
-        updateActiveNavLink(id);
-      }
-    });
+    sections.forEach(section => sectionObserver.observe(section));
   }
 
-  // --------------------------------------------------------------------------
-  // 3. Mobile Navigation Drawer
-  // --------------------------------------------------------------------------
-  const openDrawer = () => {
+  // ==========================================================================
+  // REQUIREMENT 4: Responsive Mobile Navigation Drawer
+  // ==========================================================================
+  const openMobileMenu = () => {
     mobileDrawer.classList.add('open');
     mobileDrawer.setAttribute('aria-hidden', 'false');
     drawerBackdrop.classList.add('active');
@@ -118,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
   };
 
-  const closeDrawer = () => {
+  const closeMobileMenu = () => {
     mobileDrawer.classList.remove('open');
     mobileDrawer.setAttribute('aria-hidden', 'true');
     drawerBackdrop.classList.remove('active');
@@ -132,39 +185,36 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileToggle.addEventListener('click', () => {
       const isOpen = mobileDrawer.classList.contains('open');
       if (isOpen) {
-        closeDrawer();
+        closeMobileMenu();
       } else {
-        openDrawer();
+        openMobileMenu();
       }
     });
   }
 
   if (drawerClose) {
-    drawerClose.addEventListener('click', closeDrawer);
+    drawerClose.addEventListener('click', closeMobileMenu);
   }
 
   if (drawerBackdrop) {
-    drawerBackdrop.addEventListener('click', closeDrawer);
+    drawerBackdrop.addEventListener('click', closeMobileMenu);
   }
 
-  // Close drawer on pressing Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
-      closeDrawer();
+    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('open')) {
+      closeMobileMenu();
     }
   });
 
-  // Close drawer when clicking any drawer nav link
-  const drawerLinks = document.querySelectorAll('.drawer-nav-link');
   drawerLinks.forEach(link => {
     link.addEventListener('click', () => {
-      closeDrawer();
+      closeMobileMenu();
     });
   });
 
-  // --------------------------------------------------------------------------
-  // 4. Interactive Product Category Filter
-  // --------------------------------------------------------------------------
+  // ==========================================================================
+  // INTERACTIVE FEATURE: Product Category Filter
+  // ==========================================================================
   const filterButtons = document.querySelectorAll('.filter-btn');
   const productCards = document.querySelectorAll('.product-card');
 
@@ -179,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardCategory = card.getAttribute('data-category');
         if (filterValue === 'all' || cardCategory === filterValue) {
           card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.4s ease forwards';
+          card.style.animation = 'fadeIn 0.35s ease forwards';
         } else {
           card.style.display = 'none';
         }
@@ -187,9 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --------------------------------------------------------------------------
-  // 5. Interactive Ritual Step Selection
-  // --------------------------------------------------------------------------
+  // ==========================================================================
+  // INTERACTIVE FEATURE: Ritual Step Selection
+  // ==========================================================================
   const ritualSteps = document.querySelectorAll('.ritual-step-item');
   ritualSteps.forEach(step => {
     step.addEventListener('click', () => {
@@ -198,46 +248,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --------------------------------------------------------------------------
-  // 6. Toast Notification for Actions
-  // --------------------------------------------------------------------------
-  let toastTimeout;
+  // ==========================================================================
+  // INTERACTIVE FEATURE: Toast Notifications
+  // ==========================================================================
+  let toastTimer;
   const showToast = (message) => {
-    if (!toast) return;
+    if (!toast || !toastMessage) return;
     toastMessage.textContent = message;
     toast.classList.add('show');
 
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
       toast.classList.remove('show');
     }, 3200);
   };
 
-  // Add to Bag buttons
   const addButtons = document.querySelectorAll('.add-to-bag');
   addButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const productCard = btn.closest('.product-card');
-      const productName = productCard.querySelector('.product-name').textContent;
+      const productName = productCard ? productCard.querySelector('.product-name').textContent : 'Item';
       showToast(`Added ${productName} to your ritual! ✨`);
     });
   });
 
-  // Quick View buttons
   const quickViewButtons = document.querySelectorAll('.quick-view-btn');
   quickViewButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const productCard = btn.closest('.product-card');
-      const productName = productCard.querySelector('.product-name').textContent;
-      showToast(`Viewing details for ${productName}`);
+      const productName = productCard ? productCard.querySelector('.product-name').textContent : 'Item';
+      showToast(`Quick viewing ${productName}`);
     });
   });
 
-  // --------------------------------------------------------------------------
-  // 7. Consultation Form Validation & Submission
-  // --------------------------------------------------------------------------
+  // ==========================================================================
+  // INTERACTIVE FEATURE: Consultation Form Validation
+  // ==========================================================================
   const consultationForm = document.getElementById('consultation-form');
   const formFeedback = document.getElementById('form-feedback');
 
@@ -291,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Remove error on input change
     ['user-name', 'user-email', 'skin-type'].forEach(id => {
       const el = document.getElementById(id);
       if (el) {

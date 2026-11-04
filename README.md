@@ -1,39 +1,39 @@
-# LUMINA Botanicals — Organic Luxury Skincare Landing Page
+# LUMINA Botanicals — Organic Skincare Landing Page
 ### Prodigy InfoTech Web Development Internship — Task 01 (`PRODIGY_WD_01`)
 
-An interactive, responsive landing page for an organic botanical skincare brand (**عناية فاخرة بالبشرة**). Built with clean semantic HTML5, modern CSS3 (Custom properties, Flexbox, Grid, Container Queries, and Glassmorphism), and vanilla JavaScript.
+An interactive, responsive landing page for a clean and organic botanical skincare brand. Built using semantic HTML5, modern CSS3, and vanilla JavaScript.
+
+---
+
+## 📋 Task Requirements & Implementation Checklist
+
+| Task Requirement (from Specification) | Implementation Details |
+| :--- | :--- |
+| **Interactive Navigation Menu** | Pinned fixed navigation header with dynamic styling, hover effects, and ScrollSpy. |
+| **Fixed Position & Visible on All Pages** | `position: fixed; top: 0; width: 100%;` implemented on `index.html`, `about.html`, `products.html`, and `contact.html`. |
+| **Changes Color or Style When Scrolled** | JavaScript `scroll` event dynamically transforms navbar background color (from porcelain to solid `#FFFFFF`), adds shadow, and compacts height. |
+| **Changes Color When Hovering Over Item** | JavaScript `mouseenter` & `mouseleave` event listeners dynamically set `backgroundColor = '#1F362A'` and `color = '#FFFFFF'`. |
+| **HTML Structure, CSS Styling, JS Interactivity** | Fully modular structure: `index.html` (markup), `styles.css` (design tokens & layout), and `script.js` (interactivity). |
+| **100% English Language** | All copy, UI text, labels, and documentation are in English. |
 
 ---
 
 ## 🌟 Key Features
 
-### 1. Interactive Navigation Menu (Core Task Requirement)
-* **Fixed & Visible**: Positioned permanently at the top of the viewport.
-* **Scroll-Activated Dynamic Styling**:
-  * Starts transparent over the hero section.
-  * Transitions smoothly upon scrolling into a modern frosted-glass blur (`backdrop-filter: blur(18px)`) with subtle borders and elevation shadows.
-  * Dynamically compacts height (`84px` down to `68px`).
-* **Active Section Tracking (ScrollSpy)**:
-  * Implements modern CSS `scroll-target-group: auto` and `:target-current` with high-performance `IntersectionObserver` fallback.
-  * Automatically highlights the active section link and maintains accessibility with dynamic `aria-current="page"`.
-* **Micro-interactions & Hover Effects**:
-  * Smooth pill highlights and color transitions on hover.
-  * Animated accent underline indicator on active links.
-* **Reading Scroll Progress Bar**:
-  * Real-time progress bar positioned at the bottom edge of the navbar tracking viewport scroll depth.
-* **Accessible Mobile Drawer**:
-  * Animated hamburger toggle that morphs into a close `X`.
-  * Slide-in navigation drawer with backdrop blur, keyboard trap support, and `Escape` key dismissal.
-
-### 2. Full Organic Skincare Experience (عناية بالبشرة)
-* **Announcement Bar**: Special promo and bilingual Arabic/English customer support header.
-* **Hero Section**: High-resolution imagery, floating clinical result badges, and clear conversion calls-to-action.
-* **Trust & Certification Bar**: Badges for 100% Vegan, Leaping Bunny Cruelty-Free, Dermatologist Approved, and Eco Glass.
-* **Philosophy & Botanical Ingredients**: Highlights key actives (Centella Asiatica / Cica, Wild Rosehip Seed Elixir, Botanical Hyaluronic Acid, Camellia & Green Tea).
-* **Interactive Collection**: Product cards with interactive category filtering (*All Rituals, Serums, Creams, Cleansers*), pricing, ratings, and instant notification feedback.
-* **The 3-Step Ritual**: Interactive guide detailing Purify, Infuse, and Seal steps.
-* **Verified Customer Testimonials**: Reviews from verified international and regional buyers.
-* **Personalized Skin Consultation**: Accessible form with live field validation and immediate feedback.
+1. **Fixed & Ubiquitous Navigation**:
+   - Pinned at the very top across all pages (`index.html`, `about.html`, `products.html`, `contact.html`).
+2. **JavaScript-Driven Color & Style Transitions**:
+   - **On Scroll**: JavaScript detects viewport offset and updates the navigation bar background color, border, and elevation.
+   - **On Hover**: JavaScript directly changes the menu item's background color and font color upon `mouseenter` and resets it on `mouseleave`.
+3. **ScrollSpy & Progress Indicator**:
+   - Automatically tracks the visible section using `IntersectionObserver` and updates active states (`aria-current="page"`).
+   - Real-time scroll progress bar running along the bottom border of the navbar.
+4. **Mobile Responsive Drawer**:
+   - Animated hamburger toggle transforming into an 'X'.
+   - Slide-in navigation drawer with backdrop blur and `Escape` key support.
+5. **Clean & Organic Skincare UI**:
+   - Real high-resolution product photography (Unsplash).
+   - Sections: Hero, Trust Certifications, Ingredients & Philosophy, Product Collection with Category Filters, 3-Step Daily Ritual, Verified Customer Reviews, and Skin Consultation Form.
 
 ---
 
@@ -41,10 +41,13 @@ An interactive, responsive landing page for an organic botanical skincare brand 
 
 ```
 PRODIGY_WD_01/
-├── index.html     # Semantic HTML5 structure & accessibility tags
-├── styles.css     # Design tokens, responsive grid, glassmorphism, animations
-├── script.js      # Navigation scroll listener, ScrollSpy, mobile drawer, filters
-└── README.md      # Project documentation
+├── index.html     # Primary landing page
+├── about.html     # Brand philosophy page (shares the fixed navigation menu)
+├── products.html  # Full product catalog (shares the fixed navigation menu)
+├── contact.html   # Skin consultation page (shares the fixed navigation menu)
+├── styles.css     # Design tokens, responsive grid, glassmorphism, transitions
+├── script.js      # JavaScript interactivity for scroll and hover color changes
+└── README.md      # Documentation
 ```
 
 ---
@@ -57,23 +60,14 @@ PRODIGY_WD_01/
    cd PRODIGY_WD_01
    ```
 2. Open `index.html` in your web browser:
-   - On Linux/Mac:
-     ```bash
-     xdg-open index.html   # or open index.html
-     ```
-   - Or using any local HTTP server:
-     ```bash
-     npx serve .
-     # or
-     python3 -m http.server 3000
-     ```
-
----
-
-## 🛠️ Built With
-* **HTML5**: Semantic markup, ARIA roles, modern image attributes (`fetchpriority`, `loading="lazy"`).
-* **CSS3**: Variables, Flexbox, CSS Grid, Glassmorphism, CSS Scroll-Target-Group & Target-Current.
-* **JavaScript (ES6+)**: `requestAnimationFrame` scroll throttling, `IntersectionObserver` API, event delegation.
+   ```bash
+   xdg-open index.html
+   ```
+   Or launch a local server:
+   ```bash
+   python3 -m http.server 3000
+   ```
+   Then visit `http://localhost:3000`.
 
 ---
 
