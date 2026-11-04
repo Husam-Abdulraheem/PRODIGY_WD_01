@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMINA Botanicals | Organic Luxury Skincare & Rituals</title>
+  <meta name="description" content="Experience clean, cold-pressed botanical skincare crafted for radiant skin. 100% certified organic, vegan, and dermatologist tested.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar" role="region" aria-label="Special Offer">
+    <p>🌿 Complimentary Botanical Cleanser on all orders over $75 | <span>توصيل سريع واستشارة مجانية للعناية بالبشرة</span></p>
+  </div>
+
+  <!-- Primary Header & Interactive Navigation -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="LUMINA Botanicals Home">
+        <span class="logo-mark">❀</span>
+        <span class="logo-text">LUMINA <span class="logo-sub">Botanicals</span></span>
+      </a>
+
+      <!-- Desktop & Tablet Navigation Menu -->
+      <nav class="main-nav" id="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list" role="list">
+          <li class="nav-item">
+            <a href="#hero" class="nav-link" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#philosophy" class="nav-link">Our Philosophy</a>
+          </li>
+          <li class="nav-item">
+            <a href="#products" class="nav-link">Collection</a>
+          </li>
+          <li class="nav-item">
+            <a href="#ritual" class="nav-link">The Ritual</a>
+          </li>
+          <li class="nav-item">
+            <a href="#reviews" class="nav-link">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Consultation</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <a href="#products" class="btn btn-secondary nav-action-btn">Shop Essentials</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle navigation menu">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-track" aria-hidden="true">
+      <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <span class="logo-mark">❀</span>
+        <span class="logo-text">LUMINA</span>
+      </div>
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="drawer-nav" aria-label="Mobile Navigation">
+      <ul class="drawer-nav-list" role="list">
+        <li><a href="#hero" class="drawer-nav-link">Home <span class="arabic-sub">الرئيسية</span></a></li>
+        <li><a href="#philosophy" class="drawer-nav-link">Philosophy <span class="arabic-sub">فلسفتنا الطبيعية</span></a></li>
+        <li><a href="#products" class="drawer-nav-link">Collection <span class="arabic-sub">مجموعتنا</span></a></li>
+        <li><a href="#ritual" class="drawer-nav-link">The Ritual <span class="arabic-sub">روتين العناية</span></a></li>
+        <li><a href="#reviews" class="drawer-nav-link">Reviews <span class="arabic-sub">آراء العملاء</span></a></li>
+        <li><a href="#contact" class="drawer-nav-link">Consultation <span class="arabic-sub">استشارة مجانية</span></a></li>
+      </ul>
+      <div class="drawer-footer">
+        <a href="#products" class="btn btn-primary btn-block">Explore Organic Collection</a>
+        <p class="drawer-note">100% Clean • Cruelty-Free • Dermatologist Approved</p>
+      </div>
+    </nav>
+  </div>
+  <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+
+  <main id="main-content">
+
+    <!-- 1. HERO SECTION -->
+    <section class="section hero-section" id="hero">
+      <div class="hero-bg-overlay"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-pill">
+            <span class="badge-dot"></span>
+            <span>100% Certified Organic Botanical Skincare | عناية طبيعية نقية</span>
+          </div>
+          <h1 class="hero-title">
+            Botanical Alchemy for Your Skin’s Natural Radiance
+          </h1>
+          <p class="hero-description">
+            Harnessing cold-pressed wild botanicals and bio-active antioxidants to restore, nourish, and deeply hydrate your skin barrier — without compromises.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#products" class="btn btn-primary">Discover The Collection</a>
+            <a href="#philosophy" class="btn btn-outline">Our Clean Promise</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">98%</span>
+              <span class="stat-label">Organic Ingredients</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">0%</span>
+              <span class="stat-label">Parabens & Toxins</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num">4.9★</span>
+              <span class="stat-label">Over 12,000+ Reviews</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="media-card-wrapper">
+            <div class="image-frame main-frame">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=80" 
+                   alt="LUMINA botanical skincare glass bottles and cold-pressed elixirs" 
+                   width="600" 
+                   height="700"
+                   loading="eager"
+                   fetchpriority="high">
+            </div>
+            <div class="floating-badge badge-top-right">
+              <span class="floating-icon">🌱</span>
+              <div>
+                <strong>Cold-Pressed</strong>
+                <p>Pure active botanicals</p>
+              </div>
+            </div>
+            <div class="floating-badge badge-bottom-left">
+              <span class="floating-icon">💧</span>
+              <div>
+                <strong>+94% Hydration</strong>
+                <p>Clinical 24hr barrier lock</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST BADGES BAR -->
+    <section class="trust-bar" aria-label="Trust and Certifications">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <span class="trust-icon">🌿</span>
+          <div class="trust-text">
+            <h4>100% Vegan & Organic</h4>
+            <p>Certified sustainably sourced botanicals</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🔬</span>
+          <div class="trust-text">
+            <h4>Dermatologist Tested</h4>
+            <p>Safe for hyper-sensitive skin types</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🐰</span>
+          <div class="trust-text">
+            <h4>Leaping Bunny Cruelty-Free</h4>
+            <p>Never tested on animals, ever</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">♻️</span>
+          <div class="trust-text">
+            <h4>Eco Glass Packaging</h4>
+            <p>Zero plastic waste commitment</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PHILOSOPHY SECTION -->
+    <section class="section philosophy-section" id="philosophy">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Pure Ingredients • مكونات نقية</span>
+          <h2 class="section-title">Rooted in Earth, Perfected by Science</h2>
+          <p class="section-subtitle">
+            We believe healthy skin starts with clean nourishment. Every formulation is crafted using concentrated plant extracts, nutrient-dense seed oils, and bioactive phytonutrients.
+          </p>
+        </div>
+
+        <div class="ingredients-grid">
+          <div class="ingredient-card">
+            <div class="card-icon">🍃</div>
+            <h3>Centella Asiatica (Cica)</h3>
+            <p class="ingredient-ar">مستخلص سيكا المهدئ</p>
+            <p class="card-desc">Calms redness, stimulates collagen synthesis, and reinforces skin barrier resilience against daily environmental stressors.</p>
+            <span class="ingredient-pill">Soothes & Repairs</span>
+          </div>
+
+          <div class="ingredient-card highlight-card">
+            <div class="card-icon">🌹</div>
+            <h3>Wild Rosehip Seed Elixir</h3>
+            <p class="ingredient-ar">زيت ثمار الورد البري النقي</p>
+            <p class="card-desc">Rich in naturally occurring Vitamin A (Bio-Retinol) and essential fatty acids Omega 3, 6, and 9 to illuminate complexion.</p>
+            <span class="ingredient-pill">Brightening & Glow</span>
+          </div>
+
+          <div class="ingredient-card">
+            <div class="card-icon">💧</div>
+            <h3>Botanical Hyaluronic Acid</h3>
+            <p class="ingredient-ar">حمض الهيالورونيك النباتي</p>
+            <p class="card-desc">Tri-molecular weight fermentation that penetrates deep into epidermis layers to attract and bind 1000x its weight in moisture.</p>
+            <span class="ingredient-pill">Plumps & Hydrates</span>
+          </div>
+
+          <div class="ingredient-card">
+            <div class="card-icon">🍵</div>
+            <h3>Japanese Camellia & Green Tea</h3>
+            <p class="ingredient-ar">الشاي الأخضر والكاميليا</p>
+            <p class="card-desc">Potent antioxidant defense shield neutralizing free radicals while purifying pores and balancing sebum production.</p>
+            <span class="ingredient-pill">Antioxidant Defense</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PRODUCTS COLLECTION -->
+    <section class="section products-section" id="products">
+      <div class="container">
+        <div class="section-header flex-header">
+          <div>
+            <span class="section-tag">Curated Routine • مجموعتنا المختارة</span>
+            <h2 class="section-title">Award-Winning Daily Essentials</h2>
+          </div>
+          <div class="filter-controls" role="group" aria-label="Product categories">
+            <button class="filter-btn active" data-filter="all">All Rituals</button>
+            <button class="filter-btn" data-filter="serum">Serums</button>
+            <button class="filter-btn" data-filter="cream">Creams</button>
+            <button class="filter-btn" data-filter="cleanser">Cleansers</button>
+          </div>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+
+          <!-- Product 1 -->
+          <article class="product-card" data-category="serum">
+            <div class="product-img-wrap">
+              <span class="product-badge">Best Seller</span>
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80" 
+                   alt="LUMINA Radiance Renewal Botanical Serum" 
+                   loading="lazy">
+              <button class="quick-view-btn" aria-label="Quick preview product">Quick View</button>
+            </div>
+            <div class="product-info">
+              <div class="product-rating">★★★★★ <span>(4.9)</span></div>
+              <h3 class="product-name">Radiance Renewal Elixir</h3>
+              <p class="product-arabic">سيروم تجديد الإشراقة والنضارة</p>
+              <p class="product-benefits">Wild Rosehip, Bakuchiol, Vitamin C & Squalane</p>
+              <div class="product-pricing">
+                <span class="price">$58.00</span>
+                <button class="btn btn-small btn-primary add-to-bag">Add to Routine</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card" data-category="cream">
+            <div class="product-img-wrap">
+              <span class="product-badge award-badge">Editor's Choice</span>
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" 
+                   alt="LUMINA Barrier Repair Velvet Moisture Cream" 
+                   loading="lazy">
+              <button class="quick-view-btn" aria-label="Quick preview product">Quick View</button>
+            </div>
+            <div class="product-info">
+              <div class="product-rating">★★★★★ <span>(5.0)</span></div>
+              <h3 class="product-name">Velvet Barrier Recovery Cream</h3>
+              <p class="product-arabic">كريم ترميم حاجز البشرة المخملي</p>
+              <p class="product-benefits">Ceramides, Colloidal Oat & Shea Butter</p>
+              <div class="product-pricing">
+                <span class="price">$64.00</span>
+                <button class="btn btn-small btn-primary add-to-bag">Add to Routine</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card" data-category="serum">
+            <div class="product-img-wrap">
+              <span class="product-badge">New Formula</span>
+              <img src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=800&q=80" 
+                   alt="LUMINA Bio-Active Cellular Night Oil" 
+                   loading="lazy">
+              <button class="quick-view-btn" aria-label="Quick preview product">Quick View</button>
+            </div>
+            <div class="product-info">
+              <div class="product-rating">★★★★★ <span>(4.8)</span></div>
+              <h3 class="product-name">Cellular Night Recovery Oil</h3>
+              <p class="product-arabic">زيت ليلي مكثف لتجديد الخلايا</p>
+              <p class="product-benefits">Blue Tansy, Marula Seed & Frankincense</p>
+              <div class="product-pricing">
+                <span class="price">$72.00</span>
+                <button class="btn btn-small btn-primary add-to-bag">Add to Routine</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card" data-category="cleanser">
+            <div class="product-img-wrap">
+              <span class="product-badge">Essential</span>
+              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80" 
+                   alt="LUMINA Clarifying Botanical Cleansing Oil" 
+                   loading="lazy">
+              <button class="quick-view-btn" aria-label="Quick preview product">Quick View</button>
+            </div>
+            <div class="product-info">
+              <div class="product-rating">★★★★★ <span>(4.9)</span></div>
+              <h3 class="product-name">Clarifying Botanical Cleanser</h3>
+              <p class="product-arabic">زيت منظف نباتي مهدئ للبشرة</p>
+              <p class="product-benefits">Jojoba, Chamomile & Rosemary Extract</p>
+              <div class="product-pricing">
+                <span class="price">$42.00</span>
+                <button class="btn btn-small btn-primary add-to-bag">Add to Routine</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. RITUAL / STEP-BY-STEP ROUTINE -->
+    <section class="section ritual-section" id="ritual">
+      <div class="container">
+        <div class="ritual-layout">
+          <div class="ritual-content">
+            <span class="section-tag">Mindful Daily Ritual • طقس العناية اليومي</span>
+            <h2 class="section-title">A 3-Step Holistic Ritual for Healthy Skin</h2>
+            <p class="section-subtitle">
+              Simplicity is the ultimate sophistication. Our minimalist 3-step routine works synergistically to balance, replenish, and protect your microbiome.
+            </p>
+
+            <div class="ritual-steps">
+              <div class="ritual-step-item active" data-step="1">
+                <div class="step-number">01</div>
+                <div class="step-text">
+                  <h3>Step 1: Gentle Purification (تنظيف نقي)</h3>
+                  <p>Melt away SPF, impurities, and daily pollutants with nutrient oils that leave your acid mantle intact.</p>
+                </div>
+              </div>
+
+              <div class="ritual-step-item" data-step="2">
+                <div class="step-number">02</div>
+                <div class="step-text">
+                  <h3>Step 2: Deep Botanical Infusion (تغذية عميقة)</h3>
+                  <p>Press 3–4 drops of our Radiance Elixir into damp skin to lock in moisture and stimulate cellular repair.</p>
+                </div>
+              </div>
+
+              <div class="ritual-step-item" data-step="3">
+                <div class="step-number">03</div>
+                <div class="step-text">
+                  <h3>Step 3: Moisture Barrier Seal (حماية وحبس الرطوبة)</h3>
+                  <p>Seal active phytonutrients with Velvet Recovery Cream to fortify your lipid matrix against dehydration.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ritual-media">
+            <div class="ritual-image-frame">
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" 
+                   alt="Relaxing facial skincare application ritual" 
+                   loading="lazy">
+              <div class="ritual-overlay-card">
+                <span class="check-icon">✓</span>
+                <div>
+                  <strong>Clinically Proven Results</strong>
+                  <p>94% felt instant calm & reduction in tightness within 24 hours.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. REVIEWS & COMMUNITY -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Real Stories • تجارب موثوقة</span>
+          <h2 class="section-title">Loved by Thousands Worldwide</h2>
+          <p class="section-subtitle">Read how our gentle botanical formulas transformed everyday skin rituals.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"My sensitive skin used to flare up at everything. Switching to LUMINA's Radiance Elixir was like giving my skin a deep drink of calm. The glow is real!"</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=200&q=80" alt="Reviewer Sarah M." loading="lazy">
+              </div>
+              <div>
+                <h4 class="reviewer-name">Sarah M.</h4>
+                <p class="reviewer-location">Verified Buyer • Dubai, UAE</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card highlight-review">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"أفضل منتجات طبيعية استخدمتها على الإطلاق! الكريم المخملي أعاد لبشرتي نضارتها بدون أي لمعان دهني مزعج. أنصح به بشدة لأصحاب البشرة الحساسة والجافة."</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">
+                <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=200&q=80" alt="Reviewer Nour A." loading="lazy">
+              </div>
+              <div>
+                <h4 class="reviewer-name">نور عبد الرحمن</h4>
+                <p class="reviewer-location">مشترية معتمدة • Riyadh, KSA</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"I work long hours in front of screens and air-conditioned offices. This 3-step routine has completely rescued my dull complexion. Worth every single penny."</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=200&q=80" alt="Reviewer Elena K." loading="lazy">
+              </div>
+              <div>
+                <h4 class="reviewer-name">Elena K.</h4>
+                <p class="reviewer-location">Verified Buyer • London, UK</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT & CONSULTATION FORM -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="contact-header text-center">
+            <span class="section-tag">Personalized Routine • استشارة خاصة</span>
+            <h2 class="section-title">Complimentary Skin Consultation</h2>
+            <p class="section-subtitle">
+              Not sure which botanical elixir matches your skin type? Connect with our holistic estheticians for a customized ritual recommendation.
+            </p>
+          </div>
+
+          <form class="consultation-form" id="consultation-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="user-name">Full Name *</label>
+                <input type="text" id="user-name" name="name" placeholder="e.g. Layla Al-Mansour" required>
+                <span class="field-error" id="name-error">Please enter your name</span>
+              </div>
+              <div class="form-group">
+                <label for="user-email">Email Address *</label>
+                <input type="email" id="user-email" name="email" placeholder="name@domain.com" required>
+                <span class="field-error" id="email-error">Please enter a valid email address</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="skin-type">Primary Skin Focus *</label>
+                <select id="skin-type" name="skinType" required>
+                  <option value="" disabled selected>Select your skin focus</option>
+                  <option value="dry">Dryness & Dehydration (جفاف وفقدان الرطوبة)</option>
+                  <option value="sensitive">Redness & Sensitivity (احمرار وحساسية)</option>
+                  <option value="dull">Dullness & Uneven Tone (بهتان وتفاوت اللون)</option>
+                  <option value="aging">Fine Lines & Elasticity (مقاومة علامات التقدم)</option>
+                  <option value="blemish">Blemishes & Oil Imbalance (حب الشباب والتوازن)</option>
+                </select>
+                <span class="field-error" id="skin-error">Please select your skin focus</span>
+              </div>
+              <div class="form-group">
+                <label for="preferred-time">Preferred Contact Channel</label>
+                <select id="preferred-time" name="contactChannel">
+                  <option value="email">Email Detailed Guide</option>
+                  <option value="whatsapp">WhatsApp Skin Advisor</option>
+                  <option value="virtual">15-Min Virtual Video Call</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="user-message">Notes or Skin Concerns (Optional)</label>
+              <textarea id="user-message" name="message" rows="3" placeholder="Tell us about your current routine, allergies, or goals..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block submit-btn">
+              <span>Request Free Skin Analysis</span>
+              <span class="btn-arrow">→</span>
+            </button>
+            <div class="form-feedback" id="form-feedback" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="brand-logo footer-logo">
+          <span class="logo-mark">❀</span>
+          <span class="logo-text">LUMINA <span class="logo-sub">Botanicals</span></span>
+        </a>
+        <p class="footer-tagline">
+          Clean, cold-pressed, non-toxic skincare for radiant skin and mindful self-care rituals.
+        </p>
+        <p class="arabic-tagline">جمال طبيعي مستدام مستوحى من نقاء الأرض.</p>
+        <div class="social-links" aria-label="Social media links">
+          <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+          <a href="#" class="social-icon" aria-label="Pinterest">PI</a>
+          <a href="#" class="social-icon" aria-label="TikTok">TK</a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">IN</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#philosophy">Our Ingredients</a></li>
+          <li><a href="#products">Botanical Collection</a></li>
+          <li><a href="#ritual">The 3-Step Ritual</a></li>
+          <li><a href="#reviews">Testimonials</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#contact">Skin Consultation</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">FAQ & Help Center</a></li>
+          <li><a href="#">Sustainability Report</a></li>
+          <li><a href="#">Ingredient Glossary</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col newsletter-col">
+        <h4>Join Our Inner Circle</h4>
+        <p>Subscribe for early product launches, secret sales, and seasonal skincare wellness tips.</p>
+        <form class="mini-newsletter" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Lumina Botanicals!');">
+          <input type="email" placeholder="Your email address" aria-label="Your email" required>
+          <button type="submit" class="btn btn-primary btn-small">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 LUMINA Botanicals. All Rights Reserved. Prodigy InfoTech Task-01.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <span class="dot">•</span>
+          <a href="#">Terms of Service</a>
+          <span class="dot">•</span>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div class="toast-notification" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon">✨</span>
+    <span class="toast-message" id="toast-message">Added to your routine!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
