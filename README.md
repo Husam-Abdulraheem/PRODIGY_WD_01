@@ -1,7 +1,12 @@
 # LUMINA Botanicals — Organic Skincare Landing Page
 ### Prodigy InfoTech Web Development Internship — Task 01 (`PRODIGY_WD_01`)
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://husam-abdulraheem.github.io/PRODIGY_WD_01/)
+[![Deploy to GitHub Pages](https://github.com/Husam-Abdulraheem/PRODIGY_WD_01/actions/workflows/deploy.yml/badge.svg)](https://github.com/Husam-Abdulraheem/PRODIGY_WD_01/actions/workflows/deploy.yml)
+
 An interactive, responsive landing page for a clean and organic botanical skincare brand. Built using semantic HTML5, modern CSS3, and vanilla JavaScript.
+
+🌐 **Live URL**: [https://husam-abdulraheem.github.io/PRODIGY_WD_01/](https://husam-abdulraheem.github.io/PRODIGY_WD_01/)
 
 ---
 
